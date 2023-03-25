@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.biblioteka.KontrolerProgram"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.biblioteka.KontrolerProgram">
+   <children>
+      <Label layoutX="533.0" layoutY="14.0" text="User" />
+      <Label layoutX="205.0" layoutY="23.0" prefHeight="59.0" prefWidth="191.0" text="Będzin Biblioteka">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="79.0" layoutY="114.0" text="Ksiażki:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button layoutX="161.0" layoutY="123.0" mnemonicParsing="false" text="&lt;---" />
+      <Button layoutX="351.0" layoutY="123.0" mnemonicParsing="false" text="---&gt;" />
+      <Label layoutX="259.0" layoutY="106.0" text="Tytuł" />
+      <Label layoutX="167.0" layoutY="200.0" text="Autor" />
+      <Label layoutX="147.0" layoutY="229.0" text="Rok wydania" />
+      <Label layoutX="145.0" layoutY="266.0" text="Wydawnictwo" />
+      <Label layoutX="168.0" layoutY="292.0" text="Opis" />
+      <Label layoutX="167.0" layoutY="168.0" text="ISBN" />
+      <TextField layoutX="209.0" layoutY="292.0" prefHeight="66.0" prefWidth="184.0" />
+      <TextField layoutX="204.0" layoutY="123.0" prefHeight="25.0" prefWidth="144.0" />
+      <TextField layoutX="198.0" layoutY="164.0" />
+      <TextField layoutX="202.0" layoutY="196.0" prefHeight="25.0" prefWidth="144.0" />
+      <TextField layoutX="219.0" layoutY="225.0" prefHeight="25.0" prefWidth="104.0" />
+      <TextField layoutX="224.0" layoutY="262.0" prefHeight="25.0" prefWidth="104.0" />
+      <Button layoutX="454.0" layoutY="136.0" mnemonicParsing="false" text="DODAJ" />
+      <Button layoutX="454.0" layoutY="164.0" mnemonicParsing="false" text="Zamień" />
+      <Button layoutX="461.0" layoutY="196.0" mnemonicParsing="false" text="Usuń" />
+      <Button layoutX="428.0" layoutY="238.0" mnemonicParsing="false" text="Zapisz" />
+      <Button layoutX="478.0" layoutY="238.0" mnemonicParsing="false" text="Anuluj" />
+   </children>
 </AnchorPane>
