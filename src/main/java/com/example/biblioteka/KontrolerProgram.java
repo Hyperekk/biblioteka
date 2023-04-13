@@ -45,20 +45,25 @@ public class KontrolerProgram
             String[] parts = linia.split("#");
             Rozdzielacz rozdzielacz = new Rozdzielacz(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
             ksiazki.add(rozdzielacz);
-
-            txt1.setText(ksiazki.get(numerKsiazki).tutul = parts[0]);
-            txt2.setText(ksiazki.get(numerKsiazki).IBSBN = parts[1]);
-            txt3.setText(ksiazki.get(numerKsiazki).autor = parts[2]);
-            txt4.setText(ksiazki.get(numerKsiazki).rokWydania = parts[3]);
-            txt5.setText(ksiazki.get(numerKsiazki).wydawnictwo = parts[4]);
-            txt6.setText(ksiazki.get(numerKsiazki).opis = parts[5]);
+            System.out.println(ksiazki.size());
 
         }
+
+        System.out.println(numerKsiazki);
+
+        txt1.setText(ksiazki.get(numerKsiazki).tutul);
+        txt2.setText(ksiazki.get(numerKsiazki).IBSBN);
+        txt3.setText(ksiazki.get(numerKsiazki).autor);
+        txt4.setText(ksiazki.get(numerKsiazki).rokWydania);
+        txt5.setText(ksiazki.get(numerKsiazki).wydawnictwo);
+        txt6.setText(ksiazki.get(numerKsiazki).opis);
     }
 
     public void btnPrawoLewo(ActionEvent actionEvent)
     {
-        ksiazki.get(numerKsiazki - 1);
+        numerKsiazki--;
+
+        System.out.println(numerKsiazki);
 
         txt1.setText(ksiazki.get(numerKsiazki).tutul);
         txt2.setText(ksiazki.get(numerKsiazki).IBSBN);
@@ -69,7 +74,9 @@ public class KontrolerProgram
     }
     public void btnPrawoRuch(ActionEvent actionEvent)
     {
-        ksiazki.get(numerKsiazki + 1);
+        numerKsiazki++;
+
+        System.out.println(numerKsiazki);
 
         txt1.setText(ksiazki.get(numerKsiazki).tutul);
         txt2.setText(ksiazki.get(numerKsiazki).IBSBN);
