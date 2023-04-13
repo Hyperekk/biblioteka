@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.biblioteka.KontrolerProgram">
    <children>
-      <Label layoutX="533.0" layoutY="14.0" text="User" />
+      <Label fx:id="lb1" layoutX="533.0" layoutY="14.0" text="User" />
       <Label layoutX="205.0" layoutY="23.0" prefHeight="59.0" prefWidth="191.0" text="Będzin Biblioteka">
          <font>
             <Font size="24.0" />
@@ -19,8 +19,8 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="btnLewo" layoutX="161.0" layoutY="123.0" mnemonicParsing="false" text="&lt;---" />
-      <Button fx:id="btnPrawo" layoutX="351.0" layoutY="123.0" mnemonicParsing="false" text="---&gt;" />
+      <Button fx:id="btnLewo" layoutX="161.0" layoutY="123.0" mnemonicParsing="false" onAction="#btnPrawoLewo" text="&lt;---" />
+      <Button fx:id="btnPrawo" layoutX="351.0" layoutY="123.0" mnemonicParsing="false" onAction="#btnPrawoRuch" text="---&gt;" />
       <Label layoutX="259.0" layoutY="106.0" text="Tytuł" />
       <Label layoutX="167.0" layoutY="200.0" text="Autor" />
       <Label layoutX="147.0" layoutY="229.0" text="Rok wydania" />
