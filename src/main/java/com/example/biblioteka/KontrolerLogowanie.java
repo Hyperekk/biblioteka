@@ -30,6 +30,8 @@ public class KontrolerLogowanie {
             ((Stage) txtPassword.getScene().getWindow()).close();
         } else if (password.equals("admin") && login.equals("admin")) {
             try {
+                DataExchage.userName = login;
+
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("widokProgram.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 600, 400);
                 Stage stage = new Stage();
@@ -37,6 +39,7 @@ public class KontrolerLogowanie {
                 stage.setScene(scene);
                 stage.show();
                 ((Stage) txtPassword.getScene().getWindow()).close();
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             };

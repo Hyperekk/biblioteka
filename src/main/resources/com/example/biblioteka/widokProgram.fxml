@@ -34,7 +34,7 @@
       <TextField fx:id="txt4" layoutX="234.0" layoutY="225.0" prefHeight="25.0" prefWidth="104.0" />
       <TextField fx:id="txt5" layoutX="234.0" layoutY="254.0" prefHeight="25.0" prefWidth="104.0" />
       <Button fx:id="btnDodaj" layoutX="454.0" layoutY="136.0" mnemonicParsing="false" onAction="#btnDodajAdd" text="DODAJ" />
-      <Button fx:id="btnZamień" layoutX="454.0" layoutY="164.0" mnemonicParsing="false" text="Zamień" />
+      <Button fx:id="btnZamien" layoutX="454.0" layoutY="164.0" mnemonicParsing="false" text="Zamień" />
       <Button fx:id="btnUsun" layoutX="461.0" layoutY="196.0" mnemonicParsing="false" onAction="#btnUsunDelete" text="Usuń" />
       <Button fx:id="btnZapiszSave" layoutX="428.0" layoutY="238.0" mnemonicParsing="false" onAction="#btnZapisz" text="Zapisz" />
       <Button fx:id="btnAnuluj" layoutX="478.0" layoutY="238.0" mnemonicParsing="false" onAction="#btnAnulujGoBack" text="Anuluj" />
