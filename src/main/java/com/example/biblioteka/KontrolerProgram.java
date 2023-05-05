@@ -1,17 +1,24 @@
 package com.example.biblioteka;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.Properties;
 import java.util.stream.Stream;
 
 public class KontrolerProgram
@@ -33,6 +40,10 @@ public class KontrolerProgram
     public int numerKsiazki = 0;
 
     public int numberOfTries = 0;
+    public Button btnWypozycz;
+    public DatePicker dteWypozyczenie;
+
+    public String mail = "";
 
 
     public void initialize() throws IOException {
@@ -68,6 +79,7 @@ public class KontrolerProgram
         txt6.setText(ksiazki.get(numerKsiazki).opis);
 
         resetButtons();
+        blockButtons();
     }
 
     public void btnPrawoLewo(ActionEvent actionEvent)
@@ -86,6 +98,8 @@ public class KontrolerProgram
         txt4.setText(ksiazki.get(numerKsiazki).rokWydania);
         txt5.setText(ksiazki.get(numerKsiazki).wydawnictwo);
         txt6.setText(ksiazki.get(numerKsiazki).opis);
+
+        blockButtons();
     }
     public void btnPrawoRuch(ActionEvent actionEvent)
     {
@@ -103,6 +117,8 @@ public class KontrolerProgram
         txt4.setText(ksiazki.get(numerKsiazki).rokWydania);
         txt5.setText(ksiazki.get(numerKsiazki).wydawnictwo);
         txt6.setText(ksiazki.get(numerKsiazki).opis);
+
+        blockButtons();
     }
 
     public void btnDodajAdd(ActionEvent actionEvent)
@@ -132,7 +148,6 @@ public class KontrolerProgram
 
     public void btnAnulujGoBack(ActionEvent actionEvent) throws IOException
     {
-
         /**
          * zrobione do sprawdzania numeru ksiazki i poprawnego dzialania
          */
@@ -142,7 +157,6 @@ public class KontrolerProgram
     }
 
     public void btnZapisz(ActionEvent actionEvent) throws IOException {
-
         /**
          * zrobione do sprawdzania numeru ksiazki i poprawnego dzialania
          */
@@ -180,11 +194,12 @@ public class KontrolerProgram
 
         if (numberOfTries == 2) {
 
-            ksiazki.remove(numerKsiazki - 1);
+            ksiazki.remove(numerKsiazki);
+            resetBooks();
         }
 
         resetButtons();
-        resetBooks();
+
     }
     public void resetButtons()
     {
@@ -199,6 +214,8 @@ public class KontrolerProgram
         Stream.of( txt1, txt2, txt3, txt4, txt5, txt6).forEach(txt -> {
             txt.setDisable(true);
         });
+
+        //btnWypozycz.setDisable(true);
 
         txt1.setText(ksiazki.get(numerKsiazki).tutul);
         txt2.setText(ksiazki.get(numerKsiazki).IBSBN);
@@ -220,4 +237,88 @@ public class KontrolerProgram
         resetButtons();
     }
 
+    public void blockButtons()
+    {
+        if (numerKsiazki <= 0)
+        {
+            btnLewo.setDisable(true);
+        }
+        else
+        {
+           btnLewo.setDisable(false);
+        }
+
+        if(numerKsiazki >= ksiazki.size() - 1)
+        {
+            btnPrawo.setDisable(true);
+        }
+        else
+        {
+            btnPrawo.setDisable(false);
+        }
+    }
+
+    public void btnWypozyczBorrow(ActionEvent actionEvent)
+    {
+        LocalDate terminWypozyczena = dteWypozyczenie.getValue();
+        LocalDate teraz = LocalDate.now();
+
+        Boolean czyTrue = teraz.isBefore(terminWypozyczena);
+
+        if (czyTrue == false)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Podaj poprawną datę!");
+
+            alert.showAndWait();
+            return;
+        }
+        /**
+        *   else
+        *   {
+        *   btnWypozycz.setDisable(false);
+        *   }
+        */
+
+        TextInputDialog dialog = new TextInputDialog("Email");
+
+        dialog.setTitle("Wprowadzanie e-maila");
+        dialog.setHeaderText("Podaj mail abyśmy mogli potwierdzić \ntwoje wypożyczenie na e-mail");
+        dialog.setContentText("e-mail:");
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(name -> {
+            mail = name;
+        });
+
+        String to = mail;
+        String from = "agatka0@buziaczek.pl";
+        String password = "Bartek2008";
+        Properties properties = System.getProperties();
+
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.host", "smtp.poczta.onet.pl");
+        properties.put("mail.smtp.port", "465");
+        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+
+        Session session = Session.getInstance(properties, new MyAuthenticator(from, password));
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            message.setSubject("Wypożyczenie");
+            message.setText("Witaj,"
+                    + "\njest to wiadomość wysyłana aby potwierdzić twoje wypożyczenie ksiażki \n,,"+ksiazki.get(numerKsiazki).tutul+"''. \nPolecamy naszą bibliotekę!");
+            Transport.send(message);
+            System.out.println("Wiadomość została wysłana!");
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
+
+
+    }
 }

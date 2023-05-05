@@ -1,6 +1,7 @@
 module com.example.biblioteka {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.mail;
 
     requires org.controlsfx.controls;
 
