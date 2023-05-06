@@ -2,13 +2,13 @@ package com.example.biblioteka;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.input.Clipboard;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,7 +31,7 @@ public class KontrolerProgram
 
     public List<Rozdzielacz> ksiazki = new ArrayList<>();
     public Button btnDodaj;
-    public Button btnZamien;
+    public Button btnZmien;
     public Button btnUsun;
     public Button btnZapiszSave;
     public Button btnAnuluj;
@@ -44,6 +44,8 @@ public class KontrolerProgram
     public DatePicker dteWypozyczenie;
 
     public String mail = "";
+    public Button btnCopy;
+    public Button btnReload;
 
 
     public void initialize() throws IOException {
@@ -136,7 +138,7 @@ public class KontrolerProgram
             txt.setText("");
         });
 
-        Stream.of(btnDodaj, btnUsun, btnLewo, btnPrawo, btnZamien).forEach(btn -> {
+        Stream.of(btnDodaj, btnUsun, btnLewo, btnPrawo, btnZmien).forEach(btn -> {
             btn.setDisable(true);
         });
 
@@ -165,7 +167,7 @@ public class KontrolerProgram
         Rozdzielacz rozdzielacz2 = new Rozdzielacz(txt1.getText(), txt2.getText(), txt3.getText(), txt4.getText(), txt5.getText(), txt6.getText());
         ksiazki.add(rozdzielacz2);
 
-        String tekstDoZapisania = " ";
+        String tekstDoZapisania = "";
         for ( Rozdzielacz rozdzielacz : ksiazki)
         {
             tekstDoZapisania += rozdzielacz.tutul + "#" + rozdzielacz.IBSBN + "#" + rozdzielacz.autor + "#" + rozdzielacz.rokWydania + "#" + rozdzielacz.wydawnictwo + "#" + rozdzielacz.opis + "\n";
@@ -175,8 +177,6 @@ public class KontrolerProgram
 
         resetButtons();
     }
-
-
     public void btnUsunDelete(ActionEvent actionEvent) throws IOException {
         /**
          * zrobione do sprawdzania numeru ksiazki i poprawnego dzialania
@@ -203,11 +203,11 @@ public class KontrolerProgram
     }
     public void resetButtons()
     {
-        Stream.of(btnZapiszSave, btnAnuluj).forEach(btn -> {
+        Stream.of(btnZapiszSave, btnAnuluj, btnReload).forEach(btn -> {
             btn.setDisable(true);
         });
 
-        Stream.of(btnDodaj, btnUsun, btnLewo, btnPrawo, btnZamien).forEach(btn -> {
+        Stream.of(btnDodaj, btnUsun, btnLewo, btnPrawo, btnZmien).forEach(btn -> {
             btn.setDisable(false);
         });
 
@@ -226,7 +226,7 @@ public class KontrolerProgram
     }
 
     public void resetBooks() throws IOException {
-        String tekstDoZapisania = " ";
+        String tekstDoZapisania = "";
         for ( Rozdzielacz rozdzielacz : ksiazki)
         {
             tekstDoZapisania += rozdzielacz.tutul + "#" + rozdzielacz.IBSBN + "#" + rozdzielacz.autor + "#" + rozdzielacz.rokWydania + "#" + rozdzielacz.wydawnictwo + "#" + rozdzielacz.opis + "\n";
@@ -303,7 +303,7 @@ public class KontrolerProgram
 
         Session session = Session.getInstance(properties, new MyAuthenticator(from, password));
 
-        try {
+        try{
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
@@ -315,10 +315,40 @@ public class KontrolerProgram
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
+    }
+    public void btnCopyKopiuj(ActionEvent actionEvent)
+    {
+        /*
+        String tekstDoSkopiowania = "Tytuł to: " + txt1.getText() + ", autor to: " + txt3.getText();
+        StringSelection selection = new StringSelection(tekst);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selection, selection);
+         */
+    }
 
+    public void btnZmienChange(ActionEvent actionEvent)
+    {
+        Stream.of( txt1, txt2, txt3, txt4, txt5, txt6).forEach(txt -> {
+            txt.setDisable(false);
+        });
 
+        Stream.of( btnDodaj, btnZmien, btnUsun, btnLewo, btnPrawo, btnZapiszSave).forEach(txt -> {
+            txt.setDisable(true);
+        });
 
+        Stream.of( btnAnuluj, btnReload ).forEach(txt -> {
+            txt.setDisable(false);
+        });
 
 
     }
+    public void btnReloadPrzeladuj(ActionEvent actionEvent) throws IOException {
+        btnZapisz(null);
+        ksiazki.remove(numerKsiazki);
+
+        resetBooks();
+        resetButtons();
+    }
+
+
 }
