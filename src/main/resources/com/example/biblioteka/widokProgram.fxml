@@ -7,41 +7,62 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.biblioteka.KontrolerProgram">
+<AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.biblioteka.KontrolerProgram">
    <children>
-      <Label fx:id="lb1" layoutX="533.0" layoutY="14.0" text="User" />
-      <Label layoutX="205.0" layoutY="23.0" prefHeight="59.0" prefWidth="191.0" text="Będzin Biblioteka">
+      <Label fx:id="lb1" layoutX="1493.0" layoutY="29.0" prefHeight="38.0" prefWidth="85.0" text="User">
          <font>
-            <Font size="24.0" />
+            <Font size="19.0" />
+         </font></Label>
+      <Label layoutX="685.0" layoutY="19.0" prefHeight="75.0" prefWidth="307.0" text="Będzin Biblioteka" textFill="RED">
+         <font>
+            <Font size="38.0" />
          </font>
       </Label>
-      <Label layoutX="109.0" layoutY="104.0" text="Ksiażki:">
+      <Label layoutX="344.0" layoutY="121.0" prefHeight="66.0" prefWidth="121.0" text="Ksiażki:">
          <font>
-            <Font size="15.0" />
+            <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="btnLewo" layoutX="174.0" layoutY="123.0" mnemonicParsing="false" onAction="#btnPrawoLewo" text="&lt;---" />
-      <Button fx:id="btnPrawo" layoutX="360.0" layoutY="123.0" mnemonicParsing="false" onAction="#btnPrawoRuch" text="---&gt;" />
-      <Label layoutX="273.0" layoutY="106.0" text="Tytuł" />
-      <Label layoutX="149.0" layoutY="200.0" text="Autor" />
-      <Label layoutX="131.0" layoutY="229.0" text="Rok wydania" />
-      <Label layoutX="128.0" layoutY="258.0" text="Wydawnictwo" />
-      <Label layoutX="152.0" layoutY="310.0" text="Opis" />
-      <Label layoutX="151.0" layoutY="168.0" text="ISBN" />
-      <TextField fx:id="txt6" layoutX="195.0" layoutY="285.0" prefHeight="66.0" prefWidth="184.0" />
-      <TextField fx:id="txt1" layoutX="212.0" layoutY="123.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField fx:id="txt2" layoutX="212.0" layoutY="164.0" />
-      <TextField fx:id="txt3" layoutX="212.0" layoutY="196.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField fx:id="txt4" layoutX="212.0" layoutY="226.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField fx:id="txt5" layoutX="213.0" layoutY="254.0" prefHeight="25.0" prefWidth="149.0" />
-      <Button fx:id="btnDodaj" layoutX="451.0" layoutY="164.0" mnemonicParsing="false" onAction="#btnDodajAdd" text="DODAJ" />
-      <Button fx:id="btnZmien" layoutX="450.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnZmienChange" text="Zmień" />
-      <Button fx:id="btnUsun" layoutX="457.0" layoutY="213.0" mnemonicParsing="false" onAction="#btnUsunDelete" text="Usuń" />
-      <Button fx:id="btnZapiszSave" layoutX="454.0" layoutY="263.0" mnemonicParsing="false" onAction="#btnZapisz" text="Zapisz" />
-      <Button fx:id="btnAnuluj" layoutX="429.0" layoutY="238.0" mnemonicParsing="false" onAction="#btnAnulujGoBack" text="Anuluj" />
-      <Button fx:id="btnWypozycz" layoutX="252.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnWypozyczBorrow" text="Wypożycz" />
-      <DatePicker fx:id="dteWypozyczenie" layoutX="70.0" layoutY="361.0" />
-      <Button fx:id="btnCopy" layoutX="476.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnCopyKopiuj" text="kopiuj do schowka" />
-      <Button fx:id="btnReload" layoutX="478.0" layoutY="238.0" mnemonicParsing="false" onAction="#btnReloadPrzeladuj" text="Przeladuj" />
+      <Button fx:id="btnLewo" layoutX="560.0" layoutY="187.0" mnemonicParsing="false" onAction="#btnPrawoLewo" prefHeight="60.0" prefWidth="104.0" text="&lt;---" />
+      <Button fx:id="btnPrawo" layoutX="1014.0" layoutY="187.0" mnemonicParsing="false" onAction="#btnPrawoRuch" prefHeight="60.0" prefWidth="104.0" text="---&gt;" />
+      <Label layoutX="814.0" layoutY="144.0" prefWidth="200.0" text="Tytuł">
+         <font>
+            <Font size="26.0" />
+         </font></Label>
+      <Label layoutX="544.0" layoutY="342.0" prefHeight="38.0" prefWidth="67.0" text="Autor">
+         <font>
+            <Font size="26.0" />
+         </font></Label>
+      <Label layoutX="502.0" layoutY="412.0" prefHeight="38.0" prefWidth="150.0" text="Rok wydania">
+         <font>
+            <Font size="26.0" />
+         </font></Label>
+      <Label layoutX="496.0" layoutY="482.0" prefHeight="38.0" prefWidth="162.0" text="Wydawnictwo">
+         <font>
+            <Font size="26.0" />
+         </font></Label>
+      <Label layoutX="522.0" layoutY="636.0" prefHeight="38.0" prefWidth="56.0" text="Opis">
+         <font>
+            <Font size="26.0" />
+         </font></Label>
+      <Label layoutX="550.0" layoutY="269.0" prefHeight="38.0" prefWidth="56.0" text="ISBN">
+         <font>
+            <Font size="26.0" />
+         </font></Label>
+      <TextField fx:id="txt6" layoutX="589.0" layoutY="544.0" prefHeight="200.0" prefWidth="500.0" />
+      <TextField fx:id="txt1" layoutX="664.0" layoutY="187.0" prefHeight="60.0" prefWidth="350.0" />
+      <TextField fx:id="txt2" layoutX="664.0" layoutY="258.0" prefHeight="60.0" prefWidth="350.0" />
+      <TextField fx:id="txt3" layoutX="664.0" layoutY="331.0" prefHeight="60.0" prefWidth="350.0" />
+      <TextField fx:id="txt4" layoutX="664.0" layoutY="401.0" prefHeight="60.0" prefWidth="350.0" />
+      <TextField fx:id="txt5" layoutX="664.0" layoutY="471.0" prefHeight="60.0" prefWidth="350.0" />
+      <Button fx:id="btnDodaj" layoutX="1200.0" layoutY="161.0" mnemonicParsing="false" onAction="#btnDodajAdd" prefHeight="80.0" prefWidth="200.0" text="DODAJ" />
+      <Button fx:id="btnZmien" layoutX="1200.0" layoutY="241.0" mnemonicParsing="false" onAction="#btnZmienChange" prefHeight="80.0" prefWidth="200.0" text="Zmień" />
+      <Button fx:id="btnUsun" layoutX="1300.0" layoutY="401.0" mnemonicParsing="false" onAction="#btnUsunDelete" prefHeight="80.0" prefWidth="200.0" text="Usuń" />
+      <Button fx:id="btnZapiszSave" layoutX="1100.0" layoutY="401.0" mnemonicParsing="false" onAction="#btnZapisz" prefHeight="80.0" prefWidth="200.0" text="Zapisz" />
+      <Button fx:id="btnAnuluj" layoutX="1200.0" layoutY="481.0" mnemonicParsing="false" onAction="#btnAnulujGoBack" prefHeight="80.0" prefWidth="200.0" text="Anuluj" />
+      <Button fx:id="btnWypozycz" layoutX="770.0" layoutY="760.0" mnemonicParsing="false" onAction="#btnWypozyczBorrow" prefHeight="60.0" prefWidth="138.0" text="Wypożycz" />
+      <DatePicker fx:id="dteWypozyczenie" layoutX="390.0" layoutY="760.0" prefHeight="60.0" prefWidth="295.0" />
+      <Button fx:id="btnCopy" layoutX="1436.0" layoutY="836.0" mnemonicParsing="false" onAction="#btnCopyKopiuj" prefHeight="50.0" prefWidth="150.0" text="kopiuj do schowka" />
+      <Button fx:id="btnReload" layoutX="1200.0" layoutY="321.0" mnemonicParsing="false" onAction="#btnReloadPrzeladuj" prefHeight="80.0" prefWidth="200.0" text="Przeladuj" />
    </children>
 </AnchorPane>

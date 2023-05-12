@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class KontrolerLogowanie {
@@ -25,6 +26,11 @@ public class KontrolerLogowanie {
         String password = txtPassword.getText();
         String login = txtUser.getText();
 
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = toolkit.getScreenSize();
+        System.out.println("Screen width = " + screenSize.width);
+        System.out.println("Screen height = " + screenSize.height);
+
 
         if (incorrectLoginCount >= 3) {
             ((Stage) txtPassword.getScene().getWindow()).close();
@@ -33,7 +39,7 @@ public class KontrolerLogowanie {
                 DataExchage.userName = login;
 
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("widokProgram.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+                Scene scene = new Scene(fxmlLoader.load(), screenSize.width, screenSize.height - 75);
                 Stage stage = new Stage();
                 stage.setTitle("Biblioteka");
                 stage.setScene(scene);

@@ -5,6 +5,8 @@ module com.example.biblioteka {
 
     requires org.controlsfx.controls;
 
+    requires java.desktop;
+
     opens com.example.biblioteka to javafx.fxml;
     exports com.example.biblioteka;
 }

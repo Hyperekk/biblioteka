@@ -2,13 +2,18 @@ package com.example.biblioteka;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
-import javafx.scene.input.Clipboard;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -50,11 +55,6 @@ public class KontrolerProgram
 
     public void initialize() throws IOException {
         lb1.setText(DataExchage.userName);
-
-
-        //Stream.of( txt1, txt2, txt3, txt4, txt5, txt6).forEach(txt -> {
-            //txt.setDisable(true);
-        //});
 
         Path path = Paths.get("C:/Users/Bob/Desktop/Biblioteka.txt");
         if (!Files.exists(path))
@@ -318,12 +318,10 @@ public class KontrolerProgram
     }
     public void btnCopyKopiuj(ActionEvent actionEvent)
     {
-        /*
         String tekstDoSkopiowania = "Tytuł to: " + txt1.getText() + ", autor to: " + txt3.getText();
-        StringSelection selection = new StringSelection(tekst);
+        StringSelection selection = new StringSelection(tekstDoSkopiowania);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboard.setContents(selection, selection);
-         */
     }
 
     public void btnZmienChange(ActionEvent actionEvent)
